@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del Restaurante</title>
+    <style>
+        /* Estilos CSS para personalizar la apariencia de la página */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        #menu {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menú del Restaurante</h1>
+    <button onclick="mostrarMenu()">Ver Menú</button>
+    <div id="menu">
+        <!-- Aquí se mostrará la lista de comida del restaurante -->
+    </div>
+    <script>
+    // Datos almacenados del menú (pueden venir de una base de datos en un proyecto real)
+    const menuData = [
+        { nombre: "Hamburguesa", precio: 10.50 },
+        { nombre: "Pizza", precio: 8.75 },
+        { nombre: "Ensalada", precio: 6.25 },
+        // Agrega más elementos del menú si es necesario
+    ];
+
+    function mostrarMenu() {
+        const qrScanned = true; // Aquí puedes poner la lógica para validar el escaneo del QR
+        if (qrScanned) {
+            document.getElementById("menu").style.display = "block";
+            document.querySelector("button").style.display = "none";
+            const menuContainer = document.getElementById("menu");
+            menuData.forEach(item => {
+                const menuItem = document.createElement("div");
+                menuItem.innerHTML = `<p><strong>${item.nombre}</strong>: $${item.precio}</p>`;
+                menuContainer.appendChild(menuItem);
+            });
+        } else {
+            alert("Por favor, escanea el QR para acceder al menú.");
+        }
+    }
+    </script>
+</body>
+</html>
+
